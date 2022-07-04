@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { formatTime } from '../../shared/date-time/formatTime'
 import { formatTotalTime } from '../../shared/date-time/formatTotalTIme'
+import {observer} from 'mobx-react-lite'
+
 
 type Props = {
     listIN:any,
@@ -13,6 +15,9 @@ type Props = {
 }
 
 const DataTime = ({listIN,listOUT,attendance,isDayOff}: Props) => {
+  useEffect(()=>{
+
+  },[listIN,listOUT,attendance])
     const renderList = (listIN:any, listOUT:any) => {
         const max = Math.max(listIN.length, listOUT.length)
         let jsx = []
@@ -45,4 +50,4 @@ const DataTime = ({listIN,listOUT,attendance,isDayOff}: Props) => {
   )
 }
 
-export default DataTime
+export default observer(DataTime)

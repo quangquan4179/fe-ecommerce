@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import { Link } from 'react-router-dom'
 import './login.css'
-
+import { toast } from "react-toastify";
 import { useNavigate } from 'react-router-dom';
 import Authstore from '../../stores/Authstore';
 import { GoogleLogin, GoogleLoginResponse, GoogleLoginResponseOffline, useGoogleLogout } from 'react-google-login';
@@ -43,13 +43,40 @@ const Login = (props: Props) => {
     const onLoginSuccess =async (res: GoogleLoginResponse | GoogleLoginResponseOffline) => {
         setShowloginButton(false);
         const out = res as GoogleLoginResponse
-        await Authstore.loginWithGoogleStore(out.tokenId)
+         const response=await Authstore.loginWithGoogleStore(out.tokenId)
+        console.log(response)
+        if (response.success) {
+            
+            toast.success("Login success.", {
+              position: "top-right",
+              autoClose: 1500,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+        }else{
+            toast.error("Login false.", {
+                position: "top-right",
+                autoClose: 1500,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+              });
+
+        }
+    
         signOut();
         navigate('/');  
     };
 
     const onLoginFailure = (res:GoogleLoginResponse) => {
+        
         console.log('Login Failed:', res);
+        
     };
 
     // const onSignoutSuccess =() => {
@@ -62,8 +89,30 @@ const Login = (props: Props) => {
         event.preventDefault();
 
         if(personalEmail!==''&&password!==''){
-            navigate('/');
-            await Authstore.loginStore(personalEmail, password);
+           
+            const res =await Authstore.loginStore(personalEmail, password);
+            if (res.success) {
+                navigate('/');
+                toast.success("Login success.", {
+                  position: "top-right",
+                  autoClose: 1500,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                });
+            }else{
+                toast.error("Login false.", {
+                    position: "top-right",
+                    autoClose: 1500,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                  });
+            }
         
         }
         

@@ -12,6 +12,8 @@ import { UserRoutes } from './routes/UserRoutes';
 import {LearderRoutes} from './routes/LeaderRoutes'
 import Authentication from './modules/authentication/Authentication';
 import Authstore from './stores/Authstore';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function App() {
   const [component, setComponent] = useState<ReactNode>();
   const getCurrentView = () => {
@@ -58,7 +60,10 @@ function App() {
   },[])
   return (
     <div className=" grid lg:grid-cols-7">
-    {component}
+      
+        {component}
+       
+    <ToastContainer/>
     </div>
   );
 }

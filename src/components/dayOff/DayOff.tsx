@@ -6,6 +6,7 @@ import DatePanel from "react-multi-date-picker/plugins/date_panel"
 import { setDayOffService } from '../../services/api/DayOffService';
 import { observer} from 'mobx-react-lite'
 import DayOffPicker from './DayOffPicker';
+import { toast } from 'react-toastify';
 type Props = {}
 
 const DayOff = (props: Props) => {
@@ -24,8 +25,32 @@ const DayOff = (props: Props) => {
     getDates()
   }, [])
 
-  const test = async(dates:any) => {
-    await setDayOffService(dates)
+  const setDayoff = async(dates:any) => {
+    const res = await setDayOffService(dates)
+    console.log(res)
+    if (res.success) {
+            
+      toast.success("set dayoffs success.", {
+        position: "top-right",
+        autoClose: 1500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+  }else{
+      toast.error(" set dayoffs false.", {
+          position: "top-right",
+          autoClose: 1500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+
+  }
   }
   const handleChangeMonth = async (data:any) => {
     const month = data.month.number;
@@ -54,7 +79,7 @@ const DayOff = (props: Props) => {
         </h1>
       </div>
       <div className='my-28'>
-       <DayOffPicker onMonthChange={handleChangeMonth} onSubmit={test} selectedDate={dates}/>
+       <DayOffPicker onMonthChange={handleChangeMonth} onSubmit={setDayoff} selectedDate={dates}/>
       
 
       </div>

@@ -20,7 +20,6 @@ export const login = async(personalEmail:string, password:string)=>{
         personalEmail,
         password
     })
-    // console.log(res.data)
     return res.data
 
 }

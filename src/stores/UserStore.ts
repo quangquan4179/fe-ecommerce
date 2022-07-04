@@ -49,9 +49,10 @@ import { getPosts } from "../services/api/UserService";
         }
 
         // console.log(employee)
-        await update(employee);
+         const res =await update(employee);
+         console.log(res)
         // const res = await updateEmployee(employee)
-        // return res
+        return res
     }
     async createEmployee(employee:any) {
         for (let key in employee) {

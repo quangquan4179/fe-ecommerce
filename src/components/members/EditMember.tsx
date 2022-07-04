@@ -8,6 +8,7 @@ import { useFormik } from 'formik'
 import { userSchema } from './userSchema';
 import UserStore from '../../stores/UserStore';
 import { getImgName } from '../../shared/img/getName';
+import { toast } from 'react-toastify';
 
 
 interface Values {
@@ -58,7 +59,31 @@ function EditMember() {
 
     values.gender = Number(values.gender)
     values.authorize = Number(values.authorize)
-    await UserStore.updateEmployee(values)
+    const res =await UserStore.updateEmployee(values)
+    if (res.success) {
+            
+      toast.success("Update success.", {
+        position: "top-right",
+        autoClose: 1500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+  }else{
+      toast.error("Update false.", {
+          position: "top-right",
+          autoClose: 1500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+
+  }
+    
 
   }
 

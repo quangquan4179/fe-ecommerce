@@ -49,6 +49,8 @@ class AuthStore {
         else(
             this.logout()
         )
+        return res
+
     }
     async loginWithGoogleStore (tokenId:string){
         const res = await loginWithGoogle(tokenId)
@@ -56,6 +58,7 @@ class AuthStore {
             this.setUser(true,res.data.user)
             this.storeUserId(res.data.user.userId)
             this.storeToken(res.data.tokens)
+            return res
         }
         else{
             this.logout()

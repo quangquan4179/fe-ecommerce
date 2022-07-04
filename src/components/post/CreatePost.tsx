@@ -5,9 +5,9 @@ import Authstore from '../../stores/Authstore';
 import { BiImageAdd } from 'react-icons/bi';
 import { IoMdClose } from 'react-icons/io'
 const CreatePost = () => {
-    const [avatar, setAvatar] = useState<File>();
+    const [img, setImg] = useState<File>();
     const [preview, setPreview] = useState<string>();
-    const [content, setContent] =useState<string>();
+    const [content, setContent] =useState<string>('');
     const handleChange =(e: React.ChangeEvent<HTMLInputElement>)=>{
         setContent(e.target.value)
 
@@ -17,7 +17,7 @@ const CreatePost = () => {
         if (!e.target.files || e.target.files.length === 0) {
             return;
         }
-        setAvatar(e.target.files[0]);
+        setImg(e.target.files[0]);
         const objectUrl = window.URL.createObjectURL(e.target.files[0]);
 
         setPreview(objectUrl);
@@ -25,11 +25,12 @@ const CreatePost = () => {
     }
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        if (avatar) {
+        if (img) {
             const data = new FormData();
-            data.append("avatar", avatar);
+            data.append("img", img);
             data.append("userId", Authstore.user.userId);
-            console.log("🚀 ~ file: CreatePost.tsx ~ line 32 ~ handleSubmit ~  data",  data)
+            data.append("content",content)
+            console.log("🚀 ~ file: CreatePost.tsx ~ line 32 ~ handleSubmit ~  data",  data.get("img"));
             // const res = await uploadAvatar(data);
             // console.log("🚀 ~ file: EditProfile.tsx ~ line 80 ~ handleUploadAvatar ~ res", res)
 
@@ -41,7 +42,7 @@ const CreatePost = () => {
 
     const handleCancal = () => {
         setPreview('')
-        setAvatar(undefined)
+        setImg(undefined)
     }
     return (
         <div className='bg-[#FFFFFF] shadow-sm rounded-lg mb-10 '>
@@ -63,7 +64,7 @@ const CreatePost = () => {
                         <textarea placeholder="What's on your mind" className=' w-full scroll-smooth border  rounded-lg' rows={4} onChange={(e:any)=>handleChange(e)}></textarea>
 
                         <div>
-                            {avatar ? (
+                            {img ? (
                                 <div className="flex flex-col w-full relative border rounded-lg">
                                     <img className='object-cover w-full rounded-lg p-2' src={preview} />
                                     <div>

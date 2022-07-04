@@ -9,6 +9,8 @@ import { userSchema } from '../members/userSchema';
 import Authstore from '../../stores/Authstore';
 import { uploadAvatar } from '../../services/api/AdminService' 
 import { getImgName } from '../../shared/img/getName';
+import { toast } from 'react-toastify';
+import UserStore from '../../stores/UserStore';
 
 interface Values {
   userId:string,
@@ -58,7 +60,30 @@ function EditProfile() {
 
      values.gender=Number(values.gender)
      values.authorize=Number(values.authorize)
-    //  await Authstore.updateEmployee(values)
+     const res =await UserStore.updateEmployee(values)
+     if (res.success) {
+            
+      toast.success("Update success.", {
+        position: "top-right",
+        autoClose: 1500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+  }else{
+      toast.error("Update false.", {
+          position: "top-right",
+          autoClose: 1500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+
+  }
 
   }
 
@@ -79,6 +104,30 @@ const handleUploadAvatar = async () => {
     data.append("userId", Authstore.user.userId);
     const res = await uploadAvatar(data);
     console.log("🚀 ~ file: EditProfile.tsx ~ line 80 ~ handleUploadAvatar ~ res", res)
+    setAvatar(undefined)
+    if (res.success) {
+            
+      toast.success("Update avatar success.", {
+        position: "top-right",
+        autoClose: 1500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+  }else{
+      toast.error("Update avatar false.", {
+          position: "top-right",
+          autoClose: 1500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+
+  }
     
   }
 }
