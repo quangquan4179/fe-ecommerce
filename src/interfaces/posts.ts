@@ -2,11 +2,10 @@ import { User } from "./user";
 
 export interface PostInterFace{
     user:User,
-    contents:string|null,
-    sticker:string|null,
+    content:string|null,
     images:string|null,
     id:number,
-    comments:Comment[],
+    postId:string,
     createdAt: string,
     updatedAt: string
 }

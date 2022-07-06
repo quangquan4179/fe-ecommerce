@@ -7,6 +7,7 @@ import Mail from "../components/mail/Mail";
 // import Members from "../components/members/Members";
 // import ShowMember from "../components/members/ShowMember";
 import OverView from "../components/overview";
+import CreateProduct from "../components/products/CreateProduct";
 import Products from "../components/products/Products";
 import Profile from "../components/profile";
 import EditProfile from "../components/profile/EditProfile";
@@ -38,6 +39,10 @@ export const LearderRoutes =[
     {
         path:'/dashboard/products',
         element:<Products/>
+    },
+    {
+        path:'/dashboard/products/create',
+        element:<CreateProduct/>
     },
     {
         path: '/employee/attendance',

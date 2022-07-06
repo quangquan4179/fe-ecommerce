@@ -1,0 +1,17 @@
+.drop-element>label{
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5% 5%;
+    max-width: none;
+    min-width: 0;
+    
+  
+    
+}
+.drop-element>label>div{
+    display: flex;
+    justify-content: center;
+}

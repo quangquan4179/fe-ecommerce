@@ -4,7 +4,7 @@ import { Nullable } from "../interfaces";
 import { getUserById } from "../services/api/Authservice";
 import { update, createUser } from "../services/api/AdminService";
 import { PostInterFace } from "../interfaces/posts";
-import { getPosts } from "../services/api/UserService";
+import { getPosts } from "../services/api/PostService";
  class UserStore {
    
     user: Nullable<User>=null
@@ -25,8 +25,11 @@ import { getPosts } from "../services/api/UserService";
 
   }
   async getAllPosts(userId:string){
-       await getPosts(userId)
-      // console.log("🚀 ~ file: Authstore.ts ~ line 34 ~ AuthStore ~ getAllPosts ~ res", res)
+      const res = await getPosts(userId)
+      if(res.success){
+        this.setPost(res.posts)
+      }
+     
       
 
   }

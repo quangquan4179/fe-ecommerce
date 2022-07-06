@@ -7,7 +7,7 @@ import { BiImageAdd } from 'react-icons/bi';
 import { useFormik } from 'formik'
 import { userSchema } from '../members/userSchema';
 import Authstore from '../../stores/Authstore';
-import { uploadAvatar } from '../../services/api/AdminService' 
+import { uploadAvatar } from '../../services/api/UserService' 
 import { getImgName } from '../../shared/img/getName';
 import { toast } from 'react-toastify';
 import UserStore from '../../stores/UserStore';
@@ -240,7 +240,6 @@ const handleCancal =()=>{
                     <input className='border focus:border-[#5048E5] h-full w-full rounded-md pl-4 peer outline-none' id="dateAtWork" name="dateAtWork" type="date" onChange={formik.handleChange} value={formik.values.dateAtWork}/>
                     <label  className='absolute top-[-0.9rem] left-5 bg-[#FFFFFF] peer-focus:text-[#5048E5] ' htmlFor="dateAtWork">  Date at work</label>
                   </div>
-
 
                 </div>
                 <div className='py-7 '>

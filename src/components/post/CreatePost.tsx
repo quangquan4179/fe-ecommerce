@@ -4,6 +4,8 @@ import { getImgName } from '../../shared/img/getName'
 import Authstore from '../../stores/Authstore';
 import { BiImageAdd } from 'react-icons/bi';
 import { IoMdClose } from 'react-icons/io'
+import { createPost } from '../../services/api/PostService';
+import { toast } from 'react-toastify';
 const CreatePost = () => {
     const [img, setImg] = useState<File>();
     const [preview, setPreview] = useState<string>();
@@ -25,17 +27,46 @@ const CreatePost = () => {
     }
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        if (img) {
+        if (content||img) {
             const data = new FormData();
+            if(img){
             data.append("img", img);
+
+
+            }
             data.append("userId", Authstore.user.userId);
             data.append("content",content)
-            console.log("🚀 ~ file: CreatePost.tsx ~ line 32 ~ handleSubmit ~  data",  data.get("img"));
-            // const res = await uploadAvatar(data);
-            // console.log("🚀 ~ file: EditProfile.tsx ~ line 80 ~ handleUploadAvatar ~ res", res)
+
+             const res =await  createPost(data)
+             if (res.success) {
+            
+                toast.success("Post Blog success.", {
+                  position: "top-right",
+                  autoClose: 1500,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                });
+                setContent('');
+                setImg(undefined)
+            }else{
+                toast.error("Post Blog false.", {
+                    position: "top-right",
+                    autoClose: 1500,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                  });
+          
+            }
+           
 
         }
-        console.log(content)
+       
         
     }
 
@@ -84,7 +115,7 @@ const CreatePost = () => {
                             )}
                         </div>
                         <div> 
-                            <button className='bg-[#5048E5] text-[#FFFFFF] font-bold  w-full pt-2 pb-2 rounded-lg mt-4 '>Post</button>
+                            <button type='submit' className='bg-[#5048E5] text-[#FFFFFF] font-bold  w-full pt-2 pb-2 rounded-lg mt-4 '>Post</button>
                         </div>
                     </form>
                 </div>
