@@ -13,12 +13,13 @@ import {LearderRoutes} from './routes/LeaderRoutes'
 import Authentication from './modules/authentication/Authentication';
 import Authstore from './stores/Authstore';
 import { ToastContainer } from 'react-toastify';
+import { Layout, Menu } from 'antd';
 import 'react-toastify/dist/ReactToastify.css';
+import 'antd/dist/antd.css';
 function App() {
   const [component, setComponent] = useState<ReactNode>();
   const getCurrentView = () => {
     if(Authstore.user){
-      if(Authstore.user?. authorize===7){
          return(
           <BrowserRouter>
             <Sidebar OurRoutes={AddminRoutesSide} />
@@ -26,26 +27,6 @@ function App() {
           </BrowserRouter> 
          )
       }
-      if(Authstore.user?. authorize===8){
-        return(
-          <BrowserRouter>
-            <Sidebar OurRoutes={UserRoutesSide} />
-            <Main routes={UserRoutes} />
-          </BrowserRouter> 
-        )
-      }
-      if(Authstore.user?.authorize===9){
-        
-          return(
-            <BrowserRouter>
-              <Sidebar OurRoutes={LeaderRoutesSide} />
-              <Main routes={LearderRoutes} />
-            </BrowserRouter> 
-          )
-        
-      }
-     
-    }
     else{
       return <Authentication/>
     }
@@ -59,12 +40,12 @@ function App() {
     Authstore.loadUser()
   },[])
   return (
-    <div className=" grid lg:grid-cols-7">
+    <Layout  hasSider  >
       
         {component}
        
     <ToastContainer/>
-    </div>
+    </Layout>
   );
 }
 

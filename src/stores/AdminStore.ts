@@ -28,12 +28,12 @@ import { getUserById } from "../services/api/Authservice";
 
     async getUsers(){
       const res = await getAllUsers()
-      this.setUsers(res)
+      this.setUsers(res.users)
       
     }
     async getUser(userId:string){
         const res = await getUserById(userId)
-        if(res.success){
+        if(res.status){
             this.setCurrentUser(res.data)
         }
     }

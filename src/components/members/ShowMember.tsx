@@ -44,18 +44,12 @@ const ShowMember = () => {
                 </div>
               )}
             <div className='ml-4'>
-               <figcaption className='font-medium text-4xl mb-1'>{UserStore.user?.username}</figcaption>
-               <figcaption >user_Id: <span className='bg-[#E5E7EB] rounded-lg font-normal'>{UserStore.user?.userId}</span></figcaption>
+               <figcaption className='font-medium text-4xl mb-1'>{UserStore.user?.name}</figcaption>
+               <figcaption >user_Id: <span className='bg-[#E5E7EB] rounded-lg font-normal'>{UserStore.user?.id}</span></figcaption>
             </div>
           </figure>
 
-          <div >
-              <Link to={`/dashboard/members/${id}/edit`}>
-                <button className='bg-[#5048E5] text-[#FFFFFF] font-bold mr-4 w-12 pt-2 pb-2 rounded-lg'>
-                   <FiEdit className='w-full' />
-                </button>
-                </Link>
-          </div>
+         
       </div>
       <div className='mt-7 divide-y'>
         <h2 className='my-4 text-[#5048E5] font-medium'>Details</h2>
@@ -64,17 +58,17 @@ const ShowMember = () => {
             <div className='divide-y ' >
                 <div className='py-4 pl-5 text-justify flex w-full '>
                   <span className={` inline-block  after:content-[':'] w-[40%] `}> Name</span> 
-                  <p className=' block w-full '>{UserStore.user?.username}</p>
+                  <p className=' block w-full '>{UserStore.user?.name}</p>
                 </div>
                 <div className='py-4 pl-5  flex w-full'>
                     <span className={` block after:content-[':'] w-[40%]`}>Email</span> 
-                    <p className=' block w-full'>{UserStore.user?.personalEmail}</p>
+                    <p className=' block w-full'>{UserStore.user?.email}</p>
                 </div>
                 <div className='py-4 pl-5 flex w-full'>
-                    <span className={` block after:content-[':'] w-[40%]`}>Location</span> 
-                    <p className=' block w-full'>{UserStore.user?.location}</p>
+                    <span className={` block after:content-[':'] w-[40%]`}>Address</span> 
+                    <p className=' block w-full'>{UserStore.user?.address}</p>
                 </div>
-                <div className='py-4 pl-5 flex w-full'> 
+                {/* <div className='py-4 pl-5 flex w-full'> 
                     <span className={` block after:content-[':'] w-[40%]`}>Date of Birth</span> 
                     <p className=' block w-full'>{DateToView(UserStore.user?.dateOfBirth)}</p>
                 </div>
@@ -89,7 +83,7 @@ const ShowMember = () => {
                 <div className='py-4 pl-5 flex w-full'>
                     <span className={` block after:content-[':'] w-[40%]`}> Gender</span>
                     <p className=' block w-full'>{UserStore.user?.gender===1?'Male':'Female'}</p>
-                </div>
+                </div> */}
             </div>
           
         </div>

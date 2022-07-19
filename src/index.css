@@ -9,3 +9,6 @@
 .sidebar__title{
     @apply text-[rgb(104,114,128)] font-bold
 }
+.header{
+    @apply bg-[#FFFFFF] !important;
+}

@@ -21,25 +21,17 @@ import {
  ]
  const LeaderRoutesSideApp =[
     {
-        path:'/todo',
+        path:'/dashboard/todo',
         name: 'Todo',
         element: <FontAwesomeIcon icon={faClipboardList}/>
     },
-    {
-        path:'/dashboard/chat',
-        name: 'Chat',
-        element: <FontAwesomeIcon icon={faMessage}/>
-    },
+    
     {
         path:'/dashboard/calendar',
         name: 'Calendar',
         element: <FontAwesomeIcon icon={faCalendarMinus}/>
     },
-    {
-        path:'/dashboard/mail',
-        name: 'Mail',
-        element: <FontAwesomeIcon icon={faEnvelope}/>
-    },
+    
    
 ]
  const LeaderRoutesSideManager =[

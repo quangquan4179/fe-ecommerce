@@ -12,7 +12,7 @@ export const uploadAvatar = async (data:any) => {
 
 
 export const getUsers =async()=>{
-  const res = await axiosInstance.get('/users');
+  const res = await axiosInstance.get('api/admin/users');
   return res.data
 
 }

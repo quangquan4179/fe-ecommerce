@@ -25,9 +25,9 @@ const Comments = ({ post }: Props) => {
           <div key={index}>
             <div>
               <figure className="flex  pl-3 pt-9">
-                {comment.user.avatarURL ? (
+                {comment.user.images ? (
                   <img
-                    src={getImgName(comment.user.avatarURL)}
+                    src={getImgName(comment.user.images)}
                     alt="avt"
                     className="rounded-full h-10 w-10 object-cover "
                   />
@@ -51,7 +51,7 @@ const Comments = ({ post }: Props) => {
                   <figcaption className=" text-base mb-1">
                     <span className="font-semibold ">
                       
-                      {comment.user.username}
+                      {comment.user.name}
 
                     </span>
                   </figcaption>

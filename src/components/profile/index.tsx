@@ -21,7 +21,7 @@ const Profile = (props: Props) => {
     const userId =localStorage.getItem('userId');
     if(userId){
       UserStore.getUser(userId )
-      UserStore.getAllPosts(userId)
+      // UserStore.getAllPosts(userId)
     }
     
 
@@ -46,8 +46,8 @@ const Profile = (props: Props) => {
               )}
                 
                 <div className='ml-4'>
-                  <figcaption className='font-medium text-4xl mb-1'>{UserStore.user?.username}</figcaption>
-                  <figcaption >user_Id: <span className='bg-[#E5E7EB] rounded-lg font-normal'>{UserStore.user?.userId}</span></figcaption>
+                  <figcaption className='font-medium text-4xl mb-1'>{UserStore.user?.name}</figcaption>
+                  <figcaption >user_Id: <span className='bg-[#E5E7EB] rounded-lg font-normal'>{UserStore.user?.id}</span></figcaption>
                 </div>
             </figure>
       </div>
@@ -79,13 +79,13 @@ const Profile = (props: Props) => {
             </div>
           </div>
         </div>
-        <div className='col-span-2'>
+        {/* <div className='col-span-2'>
           <CreatePost/>
           {UserStore.posts.map((post:any,index:number)=>(
             <Post post={post} key={index}/>
           )
           )}
-        </div>
+        </div> */}
 
       </div>
       </div>

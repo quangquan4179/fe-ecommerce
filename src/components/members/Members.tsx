@@ -61,40 +61,29 @@ const Members = (props: Props) => {
   const columns = useMemo(
     () => table.createColumns([
 
-      table.createDataColumn(row => row.username,{
+      table.createDataColumn(row => row.name,{
         id: 'Name',
         cell: info => info.value,
         header: () => <span>Name</span>,
 
       }),
-      table.createDataColumn(row => row.location, {
-        id: 'Location',
+      table.createDataColumn(row => row.address, {
+        id: 'Address',
         cell: info => info.value,
-        header: () => <span>Location</span>,
+        header: () => <span>Address</span>,
 
       }),
-      table.createDataColumn(row => row.personalEmail, {
+      table.createDataColumn(row => row.email, {
         id: 'Position',
         cell: info => info.value,
-        header: () => <span>Position</span>,
+        header: () => <span>Email</span>,
 
       }),
       table.createDataColumn(row=>row.dateOfBirth,{
         id: 'DateOfBirth',
         cell: info => info.value,
-        header: () => <span>Date of birth</span>,
+        header: () => <span>Phone number</span>,
       }),
-      table.createDataColumn(row=>row.dateAtWork,{
-        id: 'DateAtWork',
-        cell: info => info.value,
-        header: () => <span>Date at Work</span>,
-      }),
-      table.createDataColumn(row => row.dateOfBirth, {
-        id: 'address',
-        cell: info => info.value,
-        header: () => <span>Address</span>,
-
-      })
     ])
     , [table]
   )
@@ -109,20 +98,8 @@ const Members = (props: Props) => {
           <h1 className='font-medium text-4xl '>Members</h1>
         </div>
         <div>
-          <Link to='/dashboard/members/add'><button className='bg-[#5048E5] text-[#FFFFFF] font-bold mr-4 w-24 pt-2 pb-2 rounded-lg'>+Add</button></Link>
+          {/* <Link to='/dashboard/members/add'><button className='bg-[#5048E5] text-[#FFFFFF] font-bold mr-4 w-24 pt-2 pb-2 rounded-lg'>+Add</button></Link> */}
         </div>
-      </div>
-      <div className='flex mt-9 mb-9'>
-        <button className='flex items-center text-[#5048E5] font-medium hover:bg-[#F2F3FB] rounded-lg pt-2 pb-2 pl-5 pr-5'>
-          <RiUploadLine />
-          <p className='ml-2'>Import</p>
-
-        </button>
-        <button className='flex items-center text-[#5048E5] font-medium ml-4 hover:bg-[#F2F3FB] rounded-lg pt-2 pb-2 pl-5 pr-5'>
-          <RiDownloadLine />
-          <p className='ml-2'>Export</p>
-        </button>
-
       </div>
 
       <div className='bg-[#FFFFFF]'>
@@ -135,7 +112,7 @@ const Members = (props: Props) => {
 
             <input type="text" placeholder='Search Members '  className='placeholder:italic placeholder:text-slate-400 w-full h-14 border-[#E6E8F0] border-[1px] focus:border-[2px] focus:border-[#5048E5] outline-none rounded-lg pl-10 sm:text-sm'  onChange={e => setGlobalFilter(e.target.value)}  value={globalFilter ?? ''}/>
           </form>
-          <div className='members__sort grow-[1] relative ml-8 flex items-center pl-2'>
+          {/* <div className='members__sort grow-[1] relative ml-8 flex items-center pl-2'>
 
 
             <select id="sort" className='w-full h-14 border-[#E6E8F0] border-[1px] focus:border-[2px] focus:border-[#5048E5] outline-none rounded-lg peer' value={selected} onChange={onHandleChange} >
@@ -145,7 +122,7 @@ const Members = (props: Props) => {
               <option value="Name">Name</option>
             </select>
             <label htmlFor="sort" className='members__sort-label absolute -top-[0.8rem] left-3 bg-[#FFFFFF] peer-focus:text-[#5048E5] italic'>Sort by</label>
-          </div>
+          </div> */}
 
         </div>
 

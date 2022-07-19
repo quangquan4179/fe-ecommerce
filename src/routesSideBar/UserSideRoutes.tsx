@@ -23,26 +23,16 @@ const OverView =[
         name: 'Todo',
         element: <FontAwesomeIcon icon={faClipboardList}/>
     },
-    {
-        path:'/employee/chat',
-        name: 'Chat',
-        element: <FontAwesomeIcon icon={faMessage}/>
-    },
+    
     {
         path:'/employee/calendar',
         name: 'Calendar',
         element: <FontAwesomeIcon icon={faCalendarMinus}/>
     },
-    {
-        path:'/employee/mail',
-        name: 'Mail',
-        element: <FontAwesomeIcon icon={faEnvelope}/>
-    },
+    
    
 ]
  const UserRoutesSideManager =[
-    
-    
     {
    
         path:'/employee/attendance',

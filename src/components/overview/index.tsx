@@ -20,10 +20,10 @@ const OverView = () => {
       <div>
         Company Blog
       </div>
-      <div className='w-[60%] m-auto '>
+      {/* <div className='w-[60%] m-auto '>
          <CreatePost/>
          {posts.map((post:PostInterFace,index:number)=><Post post={post} key={index}/>)}
-      </div>
+      </div> */}
     </div>
   )
 }

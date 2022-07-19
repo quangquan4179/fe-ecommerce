@@ -4,7 +4,7 @@ import { Nullable } from "../interfaces";
 import { attendancesInterface } from "../interfaces/attendance";
 class AttendanceStore {
   attendances:attendancesInterface[] = []
-  dayOffList = []
+  dayOffList:number[] = []
   month:Nullable<number> = null
   year:Nullable<number> = null
   status = {}

@@ -40,8 +40,8 @@ import { getPosts } from "../services/api/PostService";
     async getUser(userId:string){
         const res = await getUserById(userId)
         // console.log(res)
-        if(res.success){
-            this.setCurrentUser(res.data)
+        if(res.status){
+            this.setCurrentUser(res.admin)
         }
     }
     async updateEmployee(employee:any) {

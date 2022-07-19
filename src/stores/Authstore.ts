@@ -27,8 +27,8 @@ class AuthStore {
    
 
     storeToken(token:any){
-        localStorage.setItem('accessToken', token.access_token);
-        localStorage.setItem('refreshToken', token.refresh_token);
+        localStorage.setItem('accessToken', token);
+        // localStorage.setItem('refreshToken', token.refresh_token);
         
 
     }
@@ -40,10 +40,10 @@ class AuthStore {
         const res = await login(personalEmail,password)
        
         
-        if(res.success){
-            this.setUser(true,res.data.user)
-            this.storeToken(res.data.tokens)
-            this.storeUserId(res.data.user.userId)
+        if(res.status){
+            this.setUser(true,res.admin)
+            this.storeToken(res.token)
+            this.storeUserId(res.admin.id)
            
         }
         else(
@@ -52,19 +52,19 @@ class AuthStore {
         return res
 
     }
-    async loginWithGoogleStore (tokenId:string){
-        const res = await loginWithGoogle(tokenId)
-        if(res.success){
-            this.setUser(true,res.data.user)
-            this.storeUserId(res.data.user.userId)
-            this.storeToken(res.data.tokens)
-            return res
-        }
-        else{
-            this.logout()
-        }
+    // async loginWithGoogleStore (tokenId:string){
+    //     const res = await loginWithGoogle(tokenId)
+    //     if(res.success){
+    //         this.setUser(true,res.data.user)
+    //         this.storeUserId(res.data.user.userId)
+    //         this.storeToken(res.data.tokens)
+    //         return res
+    //     }
+    //     else{
+    //         this.logout()
+    //     }
 
-    }
+    // }
 
     getAccessToken(){
         
@@ -98,8 +98,8 @@ class AuthStore {
             const res =  await getUserById(userId)
 
             
-            if(res.success){
-                this.setUser(true,res.data)
+            if(res.status){
+                this.setUser(true,res.admin)
             }
             else{
                 this.logout()

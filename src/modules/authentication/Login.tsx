@@ -30,54 +30,54 @@ const Login = (props: Props) => {
     const navigate = useNavigate();
 
 
-    const [showloginButton, setShowloginButton] = useState(true);
+    // const [showloginButton, setShowloginButton] = useState(true);
     // const [showlogoutButton, setShowlogoutButton] = useState(false);
 
 
-    const {signOut } = useGoogleLogout({
-        onLogoutSuccess:()=>{},
-        clientId: clientId,
-        cookiePolicy: 'single_host_origin',
-        onFailure:()=>{}
-    })
-    const onLoginSuccess =async (res: GoogleLoginResponse | GoogleLoginResponseOffline) => {
-        setShowloginButton(false);
-        const out = res as GoogleLoginResponse
-         const response=await Authstore.loginWithGoogleStore(out.tokenId)
-        console.log(response)
-        if (response.success) {
+    // const {signOut } = useGoogleLogout({
+    //     onLogoutSuccess:()=>{},
+    //     clientId: clientId,
+    //     cookiePolicy: 'single_host_origin',
+    //     onFailure:()=>{}
+    // })
+    // const onLoginSuccess =async (res: GoogleLoginResponse | GoogleLoginResponseOffline) => {
+    //     setShowloginButton(false);
+    //     const out = res as GoogleLoginResponse
+    //      const response=await Authstore.loginWithGoogleStore(out.tokenId)
+    //     console.log(response)
+    //     if (response.success) {
             
-            toast.success("Login success.", {
-              position: "top-right",
-              autoClose: 1500,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-            });
-        }else{
-            toast.error("Login false.", {
-                position: "top-right",
-                autoClose: 1500,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-              });
+    //         toast.success("Login success.", {
+    //           position: "top-right",
+    //           autoClose: 1500,
+    //           hideProgressBar: false,
+    //           closeOnClick: true,
+    //           pauseOnHover: true,
+    //           draggable: true,
+    //           progress: undefined,
+    //         });
+    //     }else{
+    //         toast.error("Login false.", {
+    //             position: "top-right",
+    //             autoClose: 1500,
+    //             hideProgressBar: false,
+    //             closeOnClick: true,
+    //             pauseOnHover: true,
+    //             draggable: true,
+    //             progress: undefined,
+    //           });
 
-        }
+    //     }
     
-        signOut();
-        navigate('/');  
-    };
+    //     signOut();
+    //     navigate('/');  
+    // };
 
-    const onLoginFailure = (res:GoogleLoginResponse) => {
+    // const onLoginFailure = (res:GoogleLoginResponse) => {
         
-        console.log('Login Failed:', res);
+    //     console.log('Login Failed:', res);
         
-    };
+    // };
 
     // const onSignoutSuccess =() => {
     //     alert("You have been logged out successfully");
@@ -122,7 +122,7 @@ const Login = (props: Props) => {
     } 
   return (
 
-<div className='login col-span-7'>
+<div className='login '>
         <div className='login__box rounded-lg shadow-md '>
             <h3 className="login__header">
                 Login
@@ -145,7 +145,7 @@ const Login = (props: Props) => {
                </form>
             </div>
             <div>
-            { showloginButton ?
+            {/* { showloginButton ?
                 <GoogleLogin
                     clientId={clientId}
                     buttonText="Sign In with Google"
@@ -154,14 +154,14 @@ const Login = (props: Props) => {
                     cookiePolicy={'single_host_origin'}
                     isSignedIn={true}
                     className='w-full  mt-10 font-semibold'
-                /> : null}
+                /> : null} */}
 
             
             </div>
-            <div className="login__nav">
+            {/* <div className="login__nav">
                 <Link to='/register' className="login__link">Create new account</Link>
                 <Link to="/password-recovery" className="login__link">Forgot password</Link>
-            </div>
+            </div> */}
         </div>
     </div>
   )

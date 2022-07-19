@@ -1,40 +1,27 @@
 import Calender from "../components/calender/Calender";
-import Chat from "../components/chat/Chat";
-import Dataworking from "../components/dataworkings";
-import Mail from "../components/mail/Mail";
-// import AddMembers from "../components/members/AddMembers";
-// import EditMember from "../components/members/EditMember";
-// import Members from "../components/members/Members";
-// import ShowMember from "../components/members/ShowMember";
+// import Chat from "../components/chat/Chat";
+// import Mail from "../components/mail/Mail";
+
 import OverView from "../components/overview";
 import CreateProduct from "../components/products/CreateProduct";
+import EditProject from "../components/products/EditProject";
 import Products from "../components/products/Products";
+import ShowProject from "../components/products/ShowProject";
 import Profile from "../components/profile";
 import EditProfile from "../components/profile/EditProfile";
-import Todos from "../components/todo/Todos";
-// import TotalDataWorking from "../components/totalDataWorking";
 
 export const LearderRoutes =[
     {
         path: '/',
         element:<OverView/>
     },
-    {
-        path:'/dashboard/todo',
-        element: <Todos/>
-    },
-    {
-        path:'/dashboard/chat',
-        element: <Chat/>
-    },
+ 
+    
     {
         path:'/dashboard/calendar',
         element: <Calender/>
     },
-    {
-        path: '/dashboard/mail',
-        element:<Mail/>
-    },
+   
 
     {
         path:'/dashboard/products',
@@ -45,8 +32,12 @@ export const LearderRoutes =[
         element:<CreateProduct/>
     },
     {
-        path: '/employee/attendance',
-        element: <Dataworking/>
+        path:'/dashboard/products/edit/:id',
+        element: <EditProject/>
+    },
+    {
+        path:'/dashboard/products/:id',
+        element:<ShowProject/>
     },
     {   
         path: '/employee/profile',
@@ -56,4 +47,5 @@ export const LearderRoutes =[
         path: '/employee/setting',
         element: <EditProfile/>
     }
+    
 ]

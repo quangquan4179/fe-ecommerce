@@ -15,3 +15,14 @@ export const getImgComment =(str:string)=>{
     return serverPath +'/comments/images?filename='+str.slice(21)
 
 }
+export const getImgProject =(str:string)=>{
+    const serverPath = process.env.REACT_APP_SERVER_URL
+    return serverPath +'/project/images?filename='+str.slice(18)
+
+}
+
+export const getImgTask =(str:string)=>{
+    const serverPath = process.env.REACT_APP_SERVER_URL
+    return serverPath +'/task/images?filename='+str.slice(15)
+
+}
