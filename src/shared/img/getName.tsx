@@ -1,7 +1,7 @@
-export const  getImgName =(str:string)=>{
+export const  getImgName =(str:string|null)=>{
 
     const serverPath = process.env.REACT_APP_SERVER_URL
-    return serverPath +'/users/images?filename='+str.slice(15)
+    return serverPath +''+str
 }
 
 export const getImgPost =(str:string)=>{

@@ -9,6 +9,7 @@ import ShowMember from "../components/members/ShowMember";
 import OverView from "../components/overview";
 import CreateProduct from "../components/products/CreateProduct";
 import Products from "../components/products/Products";
+import ShowProject from "../components/products/ShowProject";
 import Profile from "../components/profile";
 import EditProfile from "../components/profile/EditProfile";
 
@@ -45,6 +46,10 @@ export const AdminRoutes =[
     {
         path:'/dashboard/products/create',
         element:<CreateProduct/>
+    },
+    {
+        path:'/dashboard/products/:id',
+        element:<ShowProject/>
     },
 
    

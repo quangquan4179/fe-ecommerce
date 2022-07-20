@@ -37,9 +37,7 @@ const ShowProject = () => {
   useEffect(() => {
     if (id) {
       getProject(id).then((res) => setProjects(res.project));
-      getUsers().then((res) => {
-        setUsers(res)
-      });
+      
     }
   }, [id]);
   const showModal = () => {
@@ -135,19 +133,7 @@ const ShowProject = () => {
                 value={description}
               />
             </Form.Item>
-            <Form.Item>
-              <Select
-                mode="multiple"
-                allowClear
-                style={{ width: "100%" }}
-                placeholder="Please select"
-                onChange={handleChange}
-              >
-                {users.map((user:User)=>(<Option key={user.id}>{user.name}
-
-                </Option>))}
-              </Select>
-            </Form.Item>
+            
             <Form.Item label="Dragger">
               <Form.Item
                 name="dragger"

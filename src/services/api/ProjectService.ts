@@ -4,7 +4,7 @@ export const createProject  = async (data:any) => {
     const config = {
       headers: { "content-type": "multipart/form-data" },
     };
-    const res = await axiosInstance.post("project/create", data, config);
+    const res = await axiosInstance.post("/api/product/create", data, config);
     return res.data;
 };
 
@@ -32,4 +32,12 @@ export const getProjectByUserId = async(userId:string)=>{
         params:{userId}
     })
     return res.data
+}
+export const deleteProduct = async(id:number)=>{
+    const res = await axiosInstance.delete(`api/product/${id}`)
+    return res.data;
+}
+export const getCatalog=async()=>{
+    const res = await axiosInstance.get('api/catalog/all');
+    return res.data;
 }
